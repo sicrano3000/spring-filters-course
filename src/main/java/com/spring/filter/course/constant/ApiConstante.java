@@ -9,6 +9,7 @@ public class ApiConstante {
 	public static final Integer DEFAULT_LIMIT = 10;
 	public static final Integer DEFAULT_PAGE = 0;
 	public static final String DEFAULT_SORT = "";
-	public static final String DEFAULT_EQUAL_FILTERS = null;
+	public static final String DEFAULT_EQUAL_FILTERS = null;	
+	public static final String DOT = ".";
 
 }

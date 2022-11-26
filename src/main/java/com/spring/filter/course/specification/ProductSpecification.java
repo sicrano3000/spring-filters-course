@@ -2,6 +2,7 @@ package com.spring.filter.course.specification;
 
 import org.springframework.data.jpa.domain.Specification;
 
+import com.spring.filter.course.builder.ExpressionBuilder;
 import com.spring.filter.course.domain.Product;
 import com.spring.filter.course.model.EqualFilterModel;
 
@@ -19,9 +20,14 @@ public class ProductSpecification {
 
 			@Override
 			public Predicate toPredicate(Root<Product> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-				var expression = root.get(eq.getColumn());
+				Predicate predicate = null;
 				
-				var predicate = (eq.getIsEqual() ? criteriaBuilder.equal(expression, eq.getValue()) : criteriaBuilder.notEqual(expression, eq.getValue()));
+				var expressionBuilder = new ExpressionBuilder<>(Product.class);
+				var expression = expressionBuilder.get(root, eq.getColumn());
+				
+				if (expression != null) {
+					predicate = (eq.getIsEqual() ? criteriaBuilder.equal(expression, eq.getValue()) : criteriaBuilder.notEqual(expression, eq.getValue()));
+				}
 				
 				return predicate;
 			}
