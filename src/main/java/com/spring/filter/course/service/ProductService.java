@@ -25,7 +25,10 @@ public class ProductService implements IListService<Product> {
 
 	@Override
 	public PageModel<Product> list(FilterModel filter) {
-		return null;
+		var productPage = productRepository.findAll(filter.toSpringPageable());		
+		var pageModel = new PageModel<>(productPage);
+		
+		return pageModel;
 	}
 
 }

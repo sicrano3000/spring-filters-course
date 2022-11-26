@@ -25,7 +25,10 @@ public class SupplierService implements IListService<Supplier> {
 
 	@Override
 	public PageModel<Supplier> list(FilterModel filter) {
-		return null;
+		var supplierPage = supplierRepository.findAll(filter.toSpringPageable());		
+		var pageModel = new PageModel<>(supplierPage);
+		
+		return pageModel;
 	}
 
 }
