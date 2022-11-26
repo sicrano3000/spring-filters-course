@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.filter.course.domain.Supplier;
+import com.spring.filter.course.model.FilterModel;
+import com.spring.filter.course.model.PageModel;
 import com.spring.filter.course.repository.SupplierRepository;
 
 @Service
@@ -19,6 +21,11 @@ public class SupplierService implements IListService<Supplier> {
 		var suppliers = supplierRepository.findAll(); 
 		
 		return suppliers;
+	}
+
+	@Override
+	public PageModel<Supplier> list(FilterModel filter) {
+		return null;
 	}
 
 }

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.filter.course.domain.Product;
+import com.spring.filter.course.model.FilterModel;
+import com.spring.filter.course.model.PageModel;
 import com.spring.filter.course.repository.ProductRepository;
 
 @Service
@@ -19,6 +21,11 @@ public class ProductService implements IListService<Product> {
 		var products = productRepository.findAll();
 		
 		return products;
+	}
+
+	@Override
+	public PageModel<Product> list(FilterModel filter) {
+		return null;
 	}
 
 }
